@@ -1,0 +1,14 @@
+h1 {
+  font-size: 60px;
+}
+
+p {
+  color: #a200d6;
+  font-size: 30px;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+  margin-top: 10%;
+}
