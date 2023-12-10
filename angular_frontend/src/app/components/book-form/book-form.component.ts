@@ -25,7 +25,7 @@ export class BookFormComponent implements OnInit {
       title: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(300)]],
       author: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(80)]],
       year: ['', [Validators.required, Validators.min(1000), Validators.max(2024)]],
-      genres: this.formBuilder.array(['', Validators.required]),
+      genres: this.formBuilder.array(['']),
       language: ['', Validators.required],
       coverUrl: ['']
     })
@@ -48,8 +48,23 @@ export class BookFormComponent implements OnInit {
     });
   }
 
+  getGenreCheckedOptions = (): string[] => {
+    const checkedOptions = this.bookForm.value.genres;
+    let result: string[] = [];
+
+    for (let i = 0; i < checkedOptions.length; i++) {
+      if (checkedOptions[i]) {
+        result.push(this.genreOptions[i].name);
+      }
+    }
+    return result;
+  }
+
   onSubmit = () => {
-    this.libraryService.createBook(this.bookForm.value).subscribe({
+    const data = this.bookForm.value;
+    data.genres = this.getGenreCheckedOptions();
+    console.log(data);
+    this.libraryService.createBook(data).subscribe({
       next: () => {
         this.router.navigate(['/books/list'])
       },

@@ -2,7 +2,7 @@
   <h2 class="text-center my-3">New Book</h2>
   <form [formGroup]="bookForm"
         (ngSubmit)="onSubmit()"
-        class="form-control">
+        class="form-control purple-border">
     <div class="m-2">
       <label class="form-label"
              for="title">
@@ -72,8 +72,10 @@
       </small>
     </div>
     <div class="m-2 my-3 form-group">
-      <span>Genres:</span>
-      <br>
+      <label
+        class="form-label">
+        Genres:
+      </label>
       <div formArrayName="genres" *ngFor="let genre of genreOptions; let i = index">
         <label class="form-control-label">
           <input type="checkbox" [formControlName]="i" class="purple-box">
@@ -91,13 +93,22 @@
         size="{{languageOptions.length + 1}}"
         name="language"
         id="language"
-        multiple
         formControlName="language"
         [ngClass]="{'is-invalid': bookForm.get('language')?.invalid && bookForm.get('language')?.touched}">
         <option value="" selected disabled>Choose the language of the book:</option>
         <option class="black" *ngFor="let language of languageOptions"
                 value="{{language.name}}">{{language.displayName}}</option>
       </select>
+      <small *ngIf="bookForm.get('language')?.invalid
+             && bookForm.get('language')?.touched
+             && !bookForm.get('language')?.errors?.['serverError']"
+             class="text-danger">
+        Please choose the language of the book!
+      </small>
+      <small *ngIf="bookForm.get('language')?.errors?.['serverError']"
+             class="text-danger">
+        {{bookForm.get('language')?.errors?.['serverError']}}
+      </small>
     </div>
     <div class="m-2">
       <label class="form-label"

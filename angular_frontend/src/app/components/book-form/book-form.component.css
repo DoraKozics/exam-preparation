@@ -3,6 +3,10 @@
   color: white;
 }
 
+.purple-border {
+  border-color: #dc6eff;
+}
+
 .purple:active {
   background-color: #51006B;
   color: white;
@@ -18,7 +22,7 @@
 }
 
 form {
-  max-width: 80%;
+  max-width: 70%;
   min-width: fit-content;
   margin: auto;
 }
