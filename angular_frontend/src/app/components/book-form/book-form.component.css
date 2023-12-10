@@ -1,0 +1,24 @@
+.purple {
+  background-color: #a200d6;
+  color: white;
+}
+
+.purple:active {
+  background-color: #51006B;
+  color: white;
+}
+
+.purple-box {
+  accent-color: #a200d6;
+}
+
+.black:checked {
+  box-shadow: 0 0 10px 100px #000000 inset;
+  color: white;
+}
+
+form {
+  max-width: 80%;
+  min-width: fit-content;
+  margin: auto;
+}
