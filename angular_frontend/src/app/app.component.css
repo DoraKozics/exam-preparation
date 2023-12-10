@@ -1,6 +1,7 @@
 .base-style {
   background-color: #cddadf;
   font-family: Lexend, serif;
+  min-width: fit-content;
 }
 
 .my-container {
