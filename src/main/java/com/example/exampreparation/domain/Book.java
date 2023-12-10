@@ -25,7 +25,8 @@ public class Book {
     private Integer year;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "genres")
+    @ElementCollection(targetClass = GenreType.class)
+    @CollectionTable(name = "book_genres")
     private List<GenreType> genres;
 
     @Enumerated(EnumType.STRING)
